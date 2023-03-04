@@ -82,6 +82,9 @@
     <Compile Include="Models\DbService.cs" />
     <Compile Include="Models\DemoCountry.cs" />
     <Compile Include="Models\Encrypt.cs" />
+    <Compile Include="Controls\FilmsService.cs" />
+    <Compile Include="Controls\FilmWorkersService.cs" />
+    <Compile Include="Controls\ExtraDataService.cs" />
     <Compile Include="Models\IAuth.cs" />
     <Compile Include="Models\IEncrypt.cs" />
     <Compile Include="Models\IFilmWorker.cs" />
@@ -105,6 +108,12 @@
     <Compile Include="Views\AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FilmsRedactListBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FilmsRedactListBoxForm.Designer.cs">
+      <DependentUpon>FilmsRedactListBoxForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FilmWorkerInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,11 +132,11 @@
     <Compile Include="Views\FilmworkersFiltersForm.Designer.cs">
       <DependentUpon>FilmworkersFiltersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ListBoxForm.cs">
+    <Compile Include="Views\FWListBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ListBoxForm.Designer.cs">
-      <DependentUpon>ListBoxForm.cs</DependentUpon>
+    <Compile Include="Views\FWListBoxForm.Designer.cs">
+      <DependentUpon>FWListBoxForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
@@ -193,14 +202,17 @@
     <EmbeddedResource Include="Views\FilmInfoForm.resx">
       <DependentUpon>FilmInfoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FilmsRedactListBoxForm.resx">
+      <DependentUpon>FilmsRedactListBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FilmWorkerInfoForm.resx">
       <DependentUpon>FilmWorkerInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FilmworkersFiltersForm.resx">
       <DependentUpon>FilmworkersFiltersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ListBoxForm.resx">
-      <DependentUpon>ListBoxForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FWListBoxForm.resx">
+      <DependentUpon>FWListBoxForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

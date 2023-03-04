@@ -15,5 +15,7 @@ namespace FilmsLibrary.Models
         Country Nation { get; set; }
         string City { get; set; }
         Decimal FinState { get; set; }
+
+        ICollection<Film> GetFilms();
     }
 }

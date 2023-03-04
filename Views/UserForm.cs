@@ -15,7 +15,6 @@ namespace FilmsLibrary.Views
 {
     public partial class UserForm : Form
     {
-        DbService service;
         FilmInfoForm filmInfoForm;
         FilmworkersFiltersForm extraFilters;
         List<Film> filmList;
@@ -26,19 +25,27 @@ namespace FilmsLibrary.Views
             this.userStatus = userStatus;
             if (userStatus == "Администратор")
                 ExtraButtonLoad();
-            service = DbService.Instance;
             filmList = new List<Film>();
             this.Load += UserForm_LoadAsync;
             Films_listBox.DoubleClick += Films_listBox_DoubleClick;
             Genre_listBox.DoubleClick += Genre_listBox_DoubleClick;
             Actor_listBox.DoubleClick += Actor_listBox_DoubleClick;
-            DemoCountries_listBox.DoubleClick += DemoCountries_listBox_DoubleClick;
+
             Genre_comboBox.SelectedIndex = 0;
             Actor_comboBox.SelectedIndex = 0;
             Producer_comboBox.SelectedIndex = 0;
             Country_comboBox.SelectedIndex = 0;
             Sorting_comboBox.SelectedIndex = 0;
             DemoCountry_comboBox.SelectedIndex = 0;
+
+            DemoCountries_listBox.DoubleClick += DemoCountries_listBox_DoubleClick;
+            Genre_comboBox.SelectedIndexChanged += Genre_comboBox_SelectedIndexChanged;
+            Actor_comboBox.SelectedIndexChanged += Actor_comboBox_SelectedIndexChanged;
+            Producer_comboBox.SelectedIndexChanged += Producer_comboBox_SelectedIndexChanged;
+            Country_comboBox.SelectedIndexChanged += Country_comboBox_SelectedIndexChanged;
+            Sorting_comboBox.SelectedIndexChanged += Sorting_comboBox_SelectedIndexChanged;
+            DemoCountry_comboBox.SelectedIndexChanged += DemoCountry_comboBox_SelectedIndexChanged;
+
         }
         private void ExtraButtonLoad()
         {
@@ -47,71 +54,50 @@ namespace FilmsLibrary.Views
         }
         private void DemoCountries_listBox_DoubleClick(object sender, EventArgs e)
         {
-            DemoCountries_listBox.Items.Remove(DemoCountries_listBox.SelectedItem);
-            UpdateListBox(AllLimits(filmList));
+            if (DemoCountries_listBox.SelectedItem != null)
+            {
+                DemoCountries_listBox.Items.Remove(DemoCountries_listBox.SelectedItem);
+                UpdateListBox(AllLimits(filmList));
+            }
         }
 
         private void Films_listBox_DoubleClick(object sender, EventArgs e)
         {
-            filmInfoForm = new FilmInfoForm((Film)Films_listBox.SelectedItem);
-            filmInfoForm.ShowDialog();
+            if (Films_listBox.SelectedItem != null)
+            {
+                filmInfoForm = new FilmInfoForm((Film)Films_listBox.SelectedItem);
+                filmInfoForm.ShowDialog();
+            }
         }
 
         private void Actor_listBox_DoubleClick(object sender, EventArgs e)
         {
-            Actor_listBox.Items.Remove(Actor_listBox.SelectedItem);
-            UpdateListBox(AllLimits(filmList));
+            if (Actor_listBox.SelectedItem != null)
+            {
+                Actor_listBox.Items.Remove(Actor_listBox.SelectedItem);
+                UpdateListBox(AllLimits(filmList));
+            }
         }
 
         private void Genre_listBox_DoubleClick(object sender, EventArgs e)
         {
-            Genre_listBox.Items.Remove(Genre_listBox.SelectedItem);
-            UpdateListBox(AllLimits(filmList));
+            if (Genre_listBox.SelectedItem != null)
+            {
+                Genre_listBox.Items.Remove(Genre_listBox.SelectedItem);
+                UpdateListBox(AllLimits(filmList));
+            }
         }
         private async void UserForm_LoadAsync(object sender, EventArgs e)
         {
-            (await service.GetFilmsAsync()).ForEach(f => filmList.Add(f));
+            (await FilmsService.Instance.GetFilmsAsync()).ForEach(f => filmList.Add(f));
 
-            (await service.GetGenresAsync()).ForEach(g => Genre_comboBox.Items.Add(g));
-            (await service.GetActorsAsync()).ToList().ForEach(f => Actor_comboBox.Items.Add(f));
-            (await service.GetProducersAsync()).ToList().ForEach(f => Producer_comboBox.Items.Add(f));
-            (await service.GetCountriesAsync()).ForEach(c => Country_comboBox.Items.Add(c));
-            (await service.GetDemoCountriesAsync()).ForEach(c => DemoCountry_comboBox.Items.Add(c));
-          
-            Rating1_numericUpDown.Maximum = (await service.GetFilmsAsync()).Max(f => (decimal)(f.Rating));
-            Rating1_numericUpDown.Minimum = (await service.GetFilmsAsync()).Min(f => (decimal)(f.Rating));
-            Rating1_numericUpDown.Value = Rating1_numericUpDown.Minimum;
-            Rating2_numericUpDown.Maximum = Rating1_numericUpDown.Maximum;
-            Rating2_numericUpDown.Minimum = Rating1_numericUpDown.Minimum;
-            Rating2_numericUpDown.Value= Rating2_numericUpDown.Maximum;
+            (await ExtraDataService.Instance.GetGenresAsync()).ForEach(g => Genre_comboBox.Items.Add(g));
+            (await FilmWorkersService.Instance.GetFilmWorkersAsync(typeof(List<Actor>))).ToList().ForEach(f => Actor_comboBox.Items.Add(f));
+            (await FilmWorkersService.Instance.GetFilmWorkersAsync(typeof(List<Producer>))).ToList().ForEach(f => Producer_comboBox.Items.Add(f));
+            (await ExtraDataService.Instance.GetCountriesAsync()).ForEach(c => Country_comboBox.Items.Add(c));
+            (await ExtraDataService.Instance.GetDemoCountriesAsync()).ForEach(c => DemoCountry_comboBox.Items.Add(c));
 
-            Year1_numericUpDown.Maximum = (await service.GetFilmsAsync()).Max(f => (decimal)(f.Year.Year));
-            Year1_numericUpDown.Minimum = (await service.GetFilmsAsync()).Min(f => (decimal)(f.Year.Year));
-            Year1_numericUpDown.Value = Year1_numericUpDown.Minimum;
-            Year2_numericUpDown.Maximum = Year1_numericUpDown.Maximum;
-            Year2_numericUpDown.Minimum = Year1_numericUpDown.Minimum;
-            Year2_numericUpDown.Value = Year2_numericUpDown.Maximum;
-
-            Budget1_numericUpDown.Maximum = (await service.GetFilmsAsync()).Max(f => (decimal)(f.Budget));
-            Budget1_numericUpDown.Minimum = (await service.GetFilmsAsync()).Min(f => (decimal)(f.Budget));
-            Budget1_numericUpDown.Value = Budget1_numericUpDown.Minimum;
-            Budget2_numericUpDown.Maximum = Budget1_numericUpDown.Maximum;
-            Budget2_numericUpDown.Minimum = Budget1_numericUpDown.Minimum;
-            Budget2_numericUpDown.Value = Budget2_numericUpDown.Maximum;
-
-            Box1_numericUpDown.Maximum = (await service.GetFilmsAsync()).Max(f => (decimal)(f.BoxOffice));
-            Box1_numericUpDown.Minimum = (await service.GetFilmsAsync()).Min(f => (decimal)(f.BoxOffice));
-            Box1_numericUpDown.Value = Box1_numericUpDown.Minimum;
-            Box2_numericUpDown.Maximum = Box1_numericUpDown.Maximum;
-            Box2_numericUpDown.Minimum = Box1_numericUpDown.Minimum;
-            Box2_numericUpDown.Value = Box2_numericUpDown.Maximum;
-
-            Genre_comboBox.SelectedIndexChanged += Genre_comboBox_SelectedIndexChanged;
-            Actor_comboBox.SelectedIndexChanged += Actor_comboBox_SelectedIndexChanged;
-            Producer_comboBox.SelectedIndexChanged += Producer_comboBox_SelectedIndexChanged;
-            Country_comboBox.SelectedIndexChanged += Country_comboBox_SelectedIndexChanged;
-            Sorting_comboBox.SelectedIndexChanged += Sorting_comboBox_SelectedIndexChanged;
-            DemoCountry_comboBox.SelectedIndexChanged += DemoCountry_comboBox_SelectedIndexChanged;
+            UpdateListBox(filmList);
         }
 
         private void DemoCountry_comboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,7 +126,7 @@ namespace FilmsLibrary.Views
                 case 1: return filmList.OrderBy(f => f.Year).ToList();
                 case 2: return filmList.OrderBy(f => f.Budget).ToList();
                 case 3: return filmList.OrderBy(f => f.BoxOffice).ToList();
-                case 4: return filmList.OrderBy(f => f.CountryProduce).ToList();
+                case 4: return filmList.OrderBy(f => f.CountryProduce.Name).ToList();
                 default: return filmList.OrderBy(f => f.Name).ToList();
             }
         }
@@ -274,7 +260,7 @@ namespace FilmsLibrary.Views
         }
         private async void ActorsFilters_button_ClickAsync(object sender, EventArgs e)
         {
-            extraFilters = new FilmworkersFiltersForm(userStatus, (await DbService.Instance.GetActorsAsync()).ToList<IFilmWorker>(), Actor_listBox);
+            extraFilters = new FilmworkersFiltersForm(userStatus, (await FilmWorkersService.Instance.GetFilmWorkersAsync(typeof(List<Actor>))), Actor_listBox);
             DialogResult res = extraFilters.ShowDialog();
             if (res == DialogResult.Cancel || res == DialogResult.OK)
             {
@@ -284,7 +270,7 @@ namespace FilmsLibrary.Views
 
         private async void ProducerFilter_button_ClickAsync(object sender, EventArgs e)
         {
-            extraFilters = new FilmworkersFiltersForm(userStatus,(await DbService.Instance.GetProducersAsync()).ToList<IFilmWorker>(), Producer_comboBox);
+            extraFilters = new FilmworkersFiltersForm(userStatus,(await FilmWorkersService.Instance.GetFilmWorkersAsync(typeof(List<Producer>))), Producer_comboBox);
             DialogResult res = extraFilters.ShowDialog();
             if (res == DialogResult.Cancel || res == DialogResult.OK)
             {
@@ -294,7 +280,7 @@ namespace FilmsLibrary.Views
 
         private async void DeleteFilm_button_ClickAsync(object sender, EventArgs e)
         {
-            if (await DbService.Instance.RemoveFromDbAsync((Film)Films_listBox.SelectedItem) == true)
+            if (await FilmsService.Instance.RemoveFilmAsync((Film)Films_listBox.SelectedItem) == true)
             {
                 MessageBox.Show($"Фильм \"{((Film)Films_listBox.SelectedItem).Name}\" успешно удалён");
                 filmList.Remove((Film)Films_listBox.SelectedItem);
@@ -304,6 +290,76 @@ namespace FilmsLibrary.Views
 
         private void Producer_comboBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void UserForm_Load(object sender, EventArgs e)
+        {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
     }

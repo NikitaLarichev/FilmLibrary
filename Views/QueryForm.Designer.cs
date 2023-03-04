@@ -78,7 +78,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(954, 46);
+            this.button1.Location = new System.Drawing.Point(954, 74);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(148, 50);
             this.button1.TabIndex = 1;
@@ -90,7 +90,7 @@
             // 
             this.Genre_comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Genre_comboBox1.FormattingEnabled = true;
-            this.Genre_comboBox1.Location = new System.Drawing.Point(327, 72);
+            this.Genre_comboBox1.Location = new System.Drawing.Point(327, 100);
             this.Genre_comboBox1.Name = "Genre_comboBox1";
             this.Genre_comboBox1.Size = new System.Drawing.Size(180, 24);
             this.Genre_comboBox1.TabIndex = 2;
@@ -99,7 +99,7 @@
             // 
             this.Film_comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Film_comboBox1.FormattingEnabled = true;
-            this.Film_comboBox1.Location = new System.Drawing.Point(531, 72);
+            this.Film_comboBox1.Location = new System.Drawing.Point(531, 100);
             this.Film_comboBox1.Name = "Film_comboBox1";
             this.Film_comboBox1.Size = new System.Drawing.Size(231, 24);
             this.Film_comboBox1.TabIndex = 3;
@@ -108,7 +108,7 @@
             // 
             this.Country_comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Country_comboBox1.FormattingEnabled = true;
-            this.Country_comboBox1.Location = new System.Drawing.Point(784, 72);
+            this.Country_comboBox1.Location = new System.Drawing.Point(784, 100);
             this.Country_comboBox1.Name = "Country_comboBox1";
             this.Country_comboBox1.Size = new System.Drawing.Size(155, 24);
             this.Country_comboBox1.TabIndex = 4;
@@ -116,7 +116,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(324, 46);
+            this.label1.Location = new System.Drawing.Point(324, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(183, 23);
             this.label1.TabIndex = 5;
@@ -124,7 +124,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(528, 46);
+            this.label2.Location = new System.Drawing.Point(528, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(183, 23);
             this.label2.TabIndex = 6;
@@ -132,7 +132,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(781, 48);
+            this.label3.Location = new System.Drawing.Point(781, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(158, 23);
             this.label3.TabIndex = 7;
@@ -140,7 +140,7 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(528, 133);
+            this.label4.Location = new System.Drawing.Point(528, 161);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(183, 16);
             this.label4.TabIndex = 11;
@@ -148,7 +148,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(324, 133);
+            this.label5.Location = new System.Drawing.Point(324, 161);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(183, 16);
             this.label5.TabIndex = 10;
@@ -158,7 +158,7 @@
             // 
             this.Country_comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Country_comboBox2.FormattingEnabled = true;
-            this.Country_comboBox2.Location = new System.Drawing.Point(531, 159);
+            this.Country_comboBox2.Location = new System.Drawing.Point(531, 187);
             this.Country_comboBox2.Name = "Country_comboBox2";
             this.Country_comboBox2.Size = new System.Drawing.Size(180, 24);
             this.Country_comboBox2.TabIndex = 9;
@@ -167,14 +167,14 @@
             // 
             this.Genre_comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Genre_comboBox2.FormattingEnabled = true;
-            this.Genre_comboBox2.Location = new System.Drawing.Point(327, 159);
+            this.Genre_comboBox2.Location = new System.Drawing.Point(327, 187);
             this.Genre_comboBox2.Name = "Genre_comboBox2";
             this.Genre_comboBox2.Size = new System.Drawing.Size(180, 24);
             this.Genre_comboBox2.TabIndex = 8;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(954, 135);
+            this.button2.Location = new System.Drawing.Point(954, 163);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(148, 48);
             this.button2.TabIndex = 12;
@@ -184,7 +184,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(324, 221);
+            this.label6.Location = new System.Drawing.Point(324, 249);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(183, 23);
             this.label6.TabIndex = 14;
@@ -194,14 +194,14 @@
             // 
             this.Genre_comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Genre_comboBox3.FormattingEnabled = true;
-            this.Genre_comboBox3.Location = new System.Drawing.Point(327, 247);
+            this.Genre_comboBox3.Location = new System.Drawing.Point(327, 275);
             this.Genre_comboBox3.Name = "Genre_comboBox3";
             this.Genre_comboBox3.Size = new System.Drawing.Size(180, 24);
             this.Genre_comboBox3.TabIndex = 13;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(954, 223);
+            this.button3.Location = new System.Drawing.Point(954, 251);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(148, 48);
             this.button3.TabIndex = 15;
@@ -211,7 +211,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(954, 294);
+            this.button4.Location = new System.Drawing.Point(954, 322);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(148, 48);
             this.button4.TabIndex = 16;
@@ -221,9 +221,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(954, 400);
+            this.button5.Location = new System.Drawing.Point(954, 399);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(148, 33);
+            this.button5.Size = new System.Drawing.Size(148, 48);
             this.button5.TabIndex = 17;
             this.button5.Text = "Выполнить";
             this.button5.UseVisualStyleBackColor = true;
@@ -231,7 +231,7 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(324, 461);
+            this.label7.Location = new System.Drawing.Point(324, 499);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(183, 23);
             this.label7.TabIndex = 19;
@@ -241,21 +241,21 @@
             // 
             this.Actor_comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Actor_comboBox6.FormattingEnabled = true;
-            this.Actor_comboBox6.Location = new System.Drawing.Point(327, 487);
+            this.Actor_comboBox6.Location = new System.Drawing.Point(327, 525);
             this.Actor_comboBox6.Name = "Actor_comboBox6";
             this.Actor_comboBox6.Size = new System.Drawing.Size(180, 24);
             this.Actor_comboBox6.TabIndex = 18;
             // 
             // Year_numericUpDown6
             // 
-            this.Year_numericUpDown6.Location = new System.Drawing.Point(592, 487);
+            this.Year_numericUpDown6.Location = new System.Drawing.Point(592, 525);
             this.Year_numericUpDown6.Name = "Year_numericUpDown6";
             this.Year_numericUpDown6.Size = new System.Drawing.Size(170, 22);
             this.Year_numericUpDown6.TabIndex = 20;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(954, 461);
+            this.button6.Location = new System.Drawing.Point(954, 474);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(148, 48);
             this.button6.TabIndex = 21;
@@ -265,7 +265,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(954, 539);
+            this.button7.Location = new System.Drawing.Point(954, 552);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(148, 48);
             this.button7.TabIndex = 22;
@@ -275,7 +275,7 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(324, 539);
+            this.label8.Location = new System.Drawing.Point(324, 577);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(183, 23);
             this.label8.TabIndex = 24;
@@ -285,14 +285,14 @@
             // 
             this.Actor_comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Actor_comboBox7.FormattingEnabled = true;
-            this.Actor_comboBox7.Location = new System.Drawing.Point(327, 565);
+            this.Actor_comboBox7.Location = new System.Drawing.Point(327, 603);
             this.Actor_comboBox7.Name = "Actor_comboBox7";
             this.Actor_comboBox7.Size = new System.Drawing.Size(180, 24);
             this.Actor_comboBox7.TabIndex = 23;
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(954, 623);
+            this.button8.Location = new System.Drawing.Point(954, 636);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(148, 48);
             this.button8.TabIndex = 25;
@@ -302,16 +302,16 @@
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(324, 16);
+            this.label9.Location = new System.Drawing.Point(324, 22);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(778, 22);
+            this.label9.Size = new System.Drawing.Size(624, 49);
             this.label9.TabIndex = 26;
             this.label9.Text = "1. Для заданного жанра опледелить все фильмы, чья стоимость  меньше, чем заданный" +
     " фильм из заданной страны";
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(324, 110);
+            this.label10.Location = new System.Drawing.Point(324, 138);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(778, 22);
             this.label10.TabIndex = 27;
@@ -319,7 +319,7 @@
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(324, 198);
+            this.label11.Location = new System.Drawing.Point(324, 226);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(778, 22);
             this.label11.TabIndex = 28;
@@ -327,7 +327,7 @@
             // 
             // label12
             // 
-            this.label12.Location = new System.Drawing.Point(324, 284);
+            this.label12.Location = new System.Drawing.Point(324, 312);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(596, 22);
             this.label12.TabIndex = 29;
@@ -335,40 +335,40 @@
             // 
             // label13
             // 
-            this.label13.Location = new System.Drawing.Point(324, 360);
+            this.label13.Location = new System.Drawing.Point(324, 388);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(764, 22);
+            this.label13.Size = new System.Drawing.Size(615, 59);
             this.label13.TabIndex = 30;
-            this.label13.Text = "5. Найти имена и адреса всех актрис, которые одновременно являются продюсерами с " +
-    "состоянием свыше 100000$";
+            this.label13.Text = "5. Найти имена и адреса всех актёров, которые одновременно являются продюсерами с" +
+    " состоянием свыше 100000$";
             // 
             // label14
             // 
-            this.label14.Location = new System.Drawing.Point(324, 436);
+            this.label14.Location = new System.Drawing.Point(324, 474);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(778, 22);
+            this.label14.Size = new System.Drawing.Size(624, 22);
             this.label14.TabIndex = 31;
             this.label14.Text = "6. Для заданного актёра найти в каких фильмах он снимался в заданном году";
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(324, 514);
+            this.label15.Location = new System.Drawing.Point(324, 552);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(778, 22);
+            this.label15.Size = new System.Drawing.Size(624, 22);
             this.label15.TabIndex = 32;
             this.label15.Text = "7. Найти кто из продюсеров обладает большим состоянием чем заданный актёр";
             // 
             // label16
             // 
-            this.label16.Location = new System.Drawing.Point(324, 598);
+            this.label16.Location = new System.Drawing.Point(324, 636);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(778, 22);
+            this.label16.Size = new System.Drawing.Size(615, 22);
             this.label16.TabIndex = 33;
             this.label16.Text = "8. Найти всех продюсеров, кто одновременно является и актёрами";
             // 
             // label17
             // 
-            this.label17.Location = new System.Drawing.Point(589, 461);
+            this.label17.Location = new System.Drawing.Point(589, 499);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(183, 23);
             this.label17.TabIndex = 34;
@@ -386,7 +386,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1114, 707);
+            this.ClientSize = new System.Drawing.Size(1114, 720);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);

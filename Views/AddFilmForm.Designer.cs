@@ -52,9 +52,10 @@
             this.Country_comboBox = new System.Windows.Forms.ComboBox();
             this.AddGenre_button = new System.Windows.Forms.Button();
             this.AddCountryDemo_button = new System.Windows.Forms.Button();
-            this.Producer_textBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.Rating_maskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.Redact_button = new System.Windows.Forms.Button();
+            this.Producer_textBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,7 +208,7 @@
             this.Actors_listBox.ItemHeight = 16;
             this.Actors_listBox.Location = new System.Drawing.Point(315, 110);
             this.Actors_listBox.Name = "Actors_listBox";
-            this.Actors_listBox.Size = new System.Drawing.Size(212, 388);
+            this.Actors_listBox.Size = new System.Drawing.Size(212, 324);
             this.Actors_listBox.TabIndex = 21;
             // 
             // CountryDemo_listBox
@@ -216,7 +217,7 @@
             this.CountryDemo_listBox.ItemHeight = 16;
             this.CountryDemo_listBox.Location = new System.Drawing.Point(563, 111);
             this.CountryDemo_listBox.Name = "CountryDemo_listBox";
-            this.CountryDemo_listBox.Size = new System.Drawing.Size(225, 388);
+            this.CountryDemo_listBox.Size = new System.Drawing.Size(225, 324);
             this.CountryDemo_listBox.TabIndex = 22;
             // 
             // Genre_listBox
@@ -285,13 +286,6 @@
             this.AddCountryDemo_button.UseVisualStyleBackColor = true;
             this.AddCountryDemo_button.Click += new System.EventHandler(this.AddCountryDemo_button_ClickAsync);
             // 
-            // Producer_textBox
-            // 
-            this.Producer_textBox.Location = new System.Drawing.Point(315, 49);
-            this.Producer_textBox.Name = "Producer_textBox";
-            this.Producer_textBox.Size = new System.Drawing.Size(212, 22);
-            this.Producer_textBox.TabIndex = 14;
-            // 
             // label11
             // 
             this.label11.Location = new System.Drawing.Point(24, 365);
@@ -308,11 +302,29 @@
             this.Rating_maskedTextBox.TabIndex = 30;
             this.Rating_maskedTextBox.Text = "0";
             // 
+            // Redact_button
+            // 
+            this.Redact_button.Location = new System.Drawing.Point(315, 450);
+            this.Redact_button.Name = "Redact_button";
+            this.Redact_button.Size = new System.Drawing.Size(473, 51);
+            this.Redact_button.TabIndex = 31;
+            this.Redact_button.Text = "Редактировать фильм ";
+            this.Redact_button.UseVisualStyleBackColor = true;
+            this.Redact_button.Click += new System.EventHandler(this.Redact_button_Click);
+            // 
+            // Producer_textBox
+            // 
+            this.Producer_textBox.Location = new System.Drawing.Point(315, 49);
+            this.Producer_textBox.Name = "Producer_textBox";
+            this.Producer_textBox.Size = new System.Drawing.Size(212, 22);
+            this.Producer_textBox.TabIndex = 14;
+            // 
             // AddFilmForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 576);
+            this.Controls.Add(this.Redact_button);
             this.Controls.Add(this.Rating_maskedTextBox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.AddCountryDemo_button);
@@ -374,8 +386,9 @@
         private System.Windows.Forms.ComboBox Country_comboBox;
         private System.Windows.Forms.Button AddGenre_button;
         private System.Windows.Forms.Button AddCountryDemo_button;
-        private System.Windows.Forms.TextBox Producer_textBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.MaskedTextBox Rating_maskedTextBox;
+        private System.Windows.Forms.Button Redact_button;
+        private System.Windows.Forms.TextBox Producer_textBox;
     }
 }

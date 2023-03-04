@@ -1,6 +1,6 @@
 ﻿namespace FilmsLibrary.Views
 {
-    partial class ListBoxForm
+    partial class FWListBoxForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(333, 324);
             this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // CreateNew_button
             // 
@@ -60,6 +61,7 @@
             this.label1.Size = new System.Drawing.Size(333, 23);
             this.label1.TabIndex = 3;
             this.label1.Text = "Работники киноиндустрии:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Add_button
             // 
@@ -71,7 +73,7 @@
             this.Add_button.UseVisualStyleBackColor = true;
             this.Add_button.Click += new System.EventHandler(this.Add_button_Click);
             // 
-            // ListBoxForm
+            // FWListBoxForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -80,7 +82,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CreateNew_button);
             this.Controls.Add(this.listBox1);
-            this.Name = "ListBoxForm";
+            this.Name = "FWListBoxForm";
             this.Text = "ListBoxForm";
             this.ResumeLayout(false);
 

@@ -212,6 +212,11 @@
             // Year1_numericUpDown
             // 
             this.Year1_numericUpDown.Location = new System.Drawing.Point(595, 279);
+            this.Year1_numericUpDown.Maximum = new decimal(new int[] {
+            2030,
+            0,
+            0,
+            0});
             this.Year1_numericUpDown.Name = "Year1_numericUpDown";
             this.Year1_numericUpDown.Size = new System.Drawing.Size(135, 22);
             this.Year1_numericUpDown.TabIndex = 14;
@@ -220,9 +225,19 @@
             // Year2_numericUpDown
             // 
             this.Year2_numericUpDown.Location = new System.Drawing.Point(736, 279);
+            this.Year2_numericUpDown.Maximum = new decimal(new int[] {
+            2030,
+            0,
+            0,
+            0});
             this.Year2_numericUpDown.Name = "Year2_numericUpDown";
             this.Year2_numericUpDown.Size = new System.Drawing.Size(127, 22);
             this.Year2_numericUpDown.TabIndex = 15;
+            this.Year2_numericUpDown.Value = new decimal(new int[] {
+            2030,
+            0,
+            0,
+            0});
             this.Year2_numericUpDown.ValueChanged += new System.EventHandler(this.Year2_numericUpDown_ValueChanged);
             // 
             // Budget2_numericUpDown
@@ -234,13 +249,18 @@
             0});
             this.Budget2_numericUpDown.Location = new System.Drawing.Point(595, 414);
             this.Budget2_numericUpDown.Maximum = new decimal(new int[] {
-            1215752192,
-            23,
+            -727379968,
+            232,
             0,
             0});
             this.Budget2_numericUpDown.Name = "Budget2_numericUpDown";
             this.Budget2_numericUpDown.Size = new System.Drawing.Size(268, 22);
             this.Budget2_numericUpDown.TabIndex = 17;
+            this.Budget2_numericUpDown.Value = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
             this.Budget2_numericUpDown.ValueChanged += new System.EventHandler(this.Budget2_numericUpDown_ValueChanged);
             // 
             // Budget1_numericUpDown
@@ -252,8 +272,8 @@
             0});
             this.Budget1_numericUpDown.Location = new System.Drawing.Point(595, 361);
             this.Budget1_numericUpDown.Maximum = new decimal(new int[] {
-            1215752192,
-            23,
+            -727379968,
+            232,
             0,
             0});
             this.Budget1_numericUpDown.Name = "Budget1_numericUpDown";
@@ -337,13 +357,18 @@
             0});
             this.Box2_numericUpDown.Location = new System.Drawing.Point(595, 551);
             this.Box2_numericUpDown.Maximum = new decimal(new int[] {
-            1215752192,
-            23,
+            -727379968,
+            232,
             0,
             0});
             this.Box2_numericUpDown.Name = "Box2_numericUpDown";
             this.Box2_numericUpDown.Size = new System.Drawing.Size(268, 22);
             this.Box2_numericUpDown.TabIndex = 24;
+            this.Box2_numericUpDown.Value = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
             this.Box2_numericUpDown.ValueChanged += new System.EventHandler(this.Box2_numericUpDown_ValueChanged);
             // 
             // Box1_numericUpDown
@@ -381,6 +406,11 @@
             this.Rating2_numericUpDown.Name = "Rating2_numericUpDown";
             this.Rating2_numericUpDown.Size = new System.Drawing.Size(127, 22);
             this.Rating2_numericUpDown.TabIndex = 30;
+            this.Rating2_numericUpDown.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.Rating2_numericUpDown.ValueChanged += new System.EventHandler(this.Rating2_numericUpDown_ValueChanged);
             // 
             // Rating1_numericUpDown
@@ -514,6 +544,7 @@
             this.Controls.Add(this.Films_listBox);
             this.Name = "UserForm";
             this.Text = "UserForm";
+            this.Load += new System.EventHandler(this.UserForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Year1_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Year2_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Budget2_numericUpDown)).EndInit();

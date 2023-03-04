@@ -13,5 +13,9 @@ namespace FilmsLibrary.Models
         {
             FilmsProduce = new List<Film>();
         }
+        public ICollection<Film> GetFilms()
+        {
+            return FilmsProduce;
+        }
     }
 }

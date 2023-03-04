@@ -14,6 +14,7 @@ namespace FilmsLibrary.Views
     public partial class FilmworkersFiltersForm : Form
     {
         List<IFilmWorker> list;
+        FilmWorkerInfoForm infoForm;
         Control control;
         public FilmworkersFiltersForm(string userStatus, List<IFilmWorker> list, Control control)
         {
@@ -28,6 +29,7 @@ namespace FilmsLibrary.Views
             Country_comboBox.SelectedIndex = 0;
             City_comboBox.SelectedIndex = 0;
             Films_comboBox.SelectedIndex = 0;
+            Sorting_comboBox.SelectedIndex = 0;
 
         }
         private void ExtraButtonLoad()
@@ -37,19 +39,20 @@ namespace FilmsLibrary.Views
         }
         private void ListBox1_DoubleClick(object sender, EventArgs e)
         {
-            if(control is ListBox)
-                if(((ListBox)control).Items.Contains(listBox1.SelectedItem) == false)
-                    ((ListBox)control).Items.Add(listBox1.SelectedItem);
-            if(control is ComboBox)
-                ((ComboBox)control).SelectedItem = listBox1.SelectedItem;
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (listBox1.SelectedItem != null)
+            {
+                if (control is ListBox)
+                    if (((ListBox)control).Items.Contains(listBox1.SelectedItem) == false)
+                        ((ListBox)control).Items.Add(listBox1.SelectedItem);
+                if (control is ComboBox)
+                    ((ComboBox)control).SelectedItem = listBox1.SelectedItem;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private async void FilmworkersFiltersForm_LoadAsync(object sender, EventArgs e)
         {
-            dateTimePicker1.Value = list.Min(f => f.Birthday.Date);
-            dateTimePicker2.Value = list.Max(f => f.Birthday.Date);
             foreach(var c in list)
             {
                 if (Country_comboBox.Items.Contains(c.Nation) == false)
@@ -57,13 +60,8 @@ namespace FilmsLibrary.Views
                 if(City_comboBox.Items.Contains(c.City) == false)
                     City_comboBox.Items.Add(c.City);
             }
-            numericUpDown1.Maximum = list.Max(f => f.FinState);
-            numericUpDown1.Minimum = list.Min(f => f.FinState);
-            numericUpDown1.Value = numericUpDown1.Minimum;
-            numericUpDown2.Maximum = list.Max(f => f.FinState);
-            numericUpDown2.Minimum = list.Min(f => f.FinState);
-            numericUpDown2.Value = numericUpDown1.Maximum;
-            (await DbService.Instance.GetFilmsAsync()).ForEach(f => Films_comboBox.Items.Add(f));
+
+            (await FilmsService.Instance.GetFilmsAsync()).ForEach(f => Films_comboBox.Items.Add(f));
 
             Films_comboBox.SelectedIndexChanged += Films_comboBox_SelectedIndexChanged;
             Sex_comboBox.SelectedIndexChanged += Sex_comboBox_SelectedIndexChanged;
@@ -185,13 +183,13 @@ namespace FilmsLibrary.Views
         private async void DeleteFW_button_ClickAsync(object sender, EventArgs e)
         { 
             if(((IFilmWorker)listBox1.SelectedItem) is Actor)
-                if(await DbService.Instance.RemoveFromDbAsync((Actor)listBox1.SelectedItem) == true)
+                if(await FilmWorkersService.Instance.RemoveFWAsync((Actor)listBox1.SelectedItem) == true)
                 {
                     listBox1.Items.Remove(listBox1.SelectedItem);
                     list.Remove((IFilmWorker)listBox1.SelectedItem);
                 }
             if (((IFilmWorker)listBox1.SelectedItem) is Producer)
-                if (await DbService.Instance.RemoveFromDbAsync((Producer)listBox1.SelectedItem) == true)
+                if (await FilmWorkersService.Instance.RemoveFWAsync((Producer)listBox1.SelectedItem) == true)
                 {
                     if (((ComboBox)control).Items.Contains((Producer)listBox1.SelectedItem) == true)
                     {
@@ -200,6 +198,41 @@ namespace FilmsLibrary.Views
                     listBox1.Items.Remove(listBox1.SelectedItem);
                     list.Remove((IFilmWorker)listBox1.SelectedItem);
                 }
+        }
+
+        private void Info_button_Click(object sender, EventArgs e)
+        {
+            if(listBox1.SelectedItem != null)
+            {
+                infoForm = new FilmWorkerInfoForm((IFilmWorker)listBox1.SelectedItem);
+                infoForm.ShowDialog();
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Reverse_button.Text = "↑";
+            switch (Sorting_comboBox.SelectedIndex)
+            {
+                case 0: list = list.OrderBy(f => f.FirstName).ToList();
+                    break;
+                case 1: list = list.OrderBy(f => f.LastName).ToList();
+                    break;
+                case 2: list = list.OrderBy(f => f.Birthday).ToList();
+                    break;
+                case 3: list = list.OrderBy(f => f.FinState).ToList();
+                    break;
+                default: list = list.OrderBy(f => f.FirstName).ToList();
+                    break;
+            }
+            UpdateListBox(AllFilters());
+        }
+
+        private void Reverse_button_Click(object sender, EventArgs e)
+        {
+            Reverse_button.Text = Reverse_button.Text == "↑" ? "↓" : "↑";
+            list.Reverse();
+            UpdateListBox(AllFilters());
         }
     }
 }

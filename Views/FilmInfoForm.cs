@@ -21,12 +21,16 @@ namespace FilmsLibrary.Views
             this.film = film;
             Actors_listBox.DoubleClick += Actors_listBox_DoubleClick;
             FilmInfoVisual();
+            
         }
 
         private void Actors_listBox_DoubleClick(object sender, EventArgs e)
         {
-            fwInfoForm = new FilmWorkerInfoForm((Actor)Actors_listBox.SelectedItem);
-            fwInfoForm.ShowDialog();
+            if (Actors_listBox.SelectedItem != null)
+            {
+                fwInfoForm = new FilmWorkerInfoForm((IFilmWorker)Actors_listBox.SelectedItem);
+                fwInfoForm.ShowDialog();
+            }
         }
 
         private void FilmInfoVisual()
@@ -37,7 +41,7 @@ namespace FilmsLibrary.Views
             Info_label.Text = "Жанр:";
             foreach (Genre g in film.Genres)
                 Info_label.Text += g.Name + ", ";
-            Info_label.Text = $"Год: {film.Year.Year}";
+            Info_label.Text = $"Год: {film.Year.Year}\nРейтинг: {film.Rating}\n";
             Info_label.Text += $"\nСтрана производства: {country}\nБюджет: {film.Budget}$\n";
             Info_label.Text += $"Сборы: {film.BoxOffice}$\nКоличество зрителей: {film.Viewers} чел.\n";
             Info_label.Text += $"Страны демонстрации: ";

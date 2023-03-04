@@ -50,6 +50,10 @@
             this.Films_comboBox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.DeleteFW_button = new System.Windows.Forms.Button();
+            this.Info_button = new System.Windows.Forms.Button();
+            this.Sorting_comboBox = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.Reverse_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +64,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(302, 35);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "Список работников киноиндустрии";
             // 
             // listBox1
             // 
@@ -68,14 +72,14 @@
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(12, 60);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(302, 372);
+            this.listBox1.Size = new System.Drawing.Size(302, 324);
             this.listBox1.TabIndex = 1;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(330, 22);
+            this.label2.Location = new System.Drawing.Point(334, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(244, 35);
+            this.label2.Size = new System.Drawing.Size(244, 22);
             this.label2.TabIndex = 2;
             this.label2.Text = "Пол";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -88,30 +92,31 @@
             "Все",
             "мужской",
             "женский"});
-            this.Sex_comboBox.Location = new System.Drawing.Point(333, 60);
+            this.Sex_comboBox.Location = new System.Drawing.Point(337, 115);
             this.Sex_comboBox.Name = "Sex_comboBox";
             this.Sex_comboBox.Size = new System.Drawing.Size(241, 24);
             this.Sex_comboBox.TabIndex = 3;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(330, 97);
+            this.label3.Location = new System.Drawing.Point(334, 142);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(244, 35);
+            this.label3.Size = new System.Drawing.Size(244, 28);
             this.label3.TabIndex = 4;
             this.label3.Text = "Дата рождения";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(333, 154);
+            this.dateTimePicker1.Location = new System.Drawing.Point(337, 192);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(241, 22);
             this.dateTimePicker1.TabIndex = 5;
+            this.dateTimePicker1.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(330, 132);
+            this.label4.Location = new System.Drawing.Point(334, 170);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(244, 19);
             this.label4.TabIndex = 6;
@@ -120,7 +125,7 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(330, 179);
+            this.label5.Location = new System.Drawing.Point(334, 217);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(244, 21);
             this.label5.TabIndex = 8;
@@ -129,7 +134,7 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(333, 203);
+            this.dateTimePicker2.Location = new System.Drawing.Point(337, 241);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(241, 22);
             this.dateTimePicker2.TabIndex = 7;
@@ -140,14 +145,14 @@
             this.Country_comboBox.FormattingEnabled = true;
             this.Country_comboBox.Items.AddRange(new object[] {
             "Все"});
-            this.Country_comboBox.Location = new System.Drawing.Point(333, 265);
+            this.Country_comboBox.Location = new System.Drawing.Point(337, 303);
             this.Country_comboBox.Name = "Country_comboBox";
             this.Country_comboBox.Size = new System.Drawing.Size(241, 24);
             this.Country_comboBox.TabIndex = 10;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(330, 227);
+            this.label6.Location = new System.Drawing.Point(334, 265);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(244, 35);
             this.label6.TabIndex = 9;
@@ -160,14 +165,14 @@
             this.City_comboBox.FormattingEnabled = true;
             this.City_comboBox.Items.AddRange(new object[] {
             "Все"});
-            this.City_comboBox.Location = new System.Drawing.Point(333, 330);
+            this.City_comboBox.Location = new System.Drawing.Point(337, 368);
             this.City_comboBox.Name = "City_comboBox";
             this.City_comboBox.Size = new System.Drawing.Size(241, 24);
             this.City_comboBox.TabIndex = 12;
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(330, 292);
+            this.label7.Location = new System.Drawing.Point(334, 330);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(244, 35);
             this.label7.TabIndex = 11;
@@ -181,14 +186,19 @@
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(333, 413);
+            this.numericUpDown1.Location = new System.Drawing.Point(337, 451);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(241, 22);
             this.numericUpDown1.TabIndex = 13;
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(330, 392);
+            this.label8.Location = new System.Drawing.Point(334, 430);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(244, 18);
             this.label8.TabIndex = 14;
@@ -197,7 +207,7 @@
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(330, 436);
+            this.label9.Location = new System.Drawing.Point(334, 474);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(244, 18);
             this.label9.TabIndex = 16;
@@ -211,14 +221,24 @@
             0,
             0,
             0});
-            this.numericUpDown2.Location = new System.Drawing.Point(333, 457);
+            this.numericUpDown2.Location = new System.Drawing.Point(337, 495);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(241, 22);
             this.numericUpDown2.TabIndex = 15;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(330, 357);
+            this.label10.Location = new System.Drawing.Point(334, 395);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(244, 35);
             this.label10.TabIndex = 17;
@@ -227,7 +247,7 @@
             // 
             // Add_button
             // 
-            this.Add_button.Location = new System.Drawing.Point(12, 504);
+            this.Add_button.Location = new System.Drawing.Point(12, 548);
             this.Add_button.Name = "Add_button";
             this.Add_button.Size = new System.Drawing.Size(302, 49);
             this.Add_button.TabIndex = 18;
@@ -241,14 +261,14 @@
             this.Films_comboBox.FormattingEnabled = true;
             this.Films_comboBox.Items.AddRange(new object[] {
             "Все"});
-            this.Films_comboBox.Location = new System.Drawing.Point(333, 529);
+            this.Films_comboBox.Location = new System.Drawing.Point(337, 567);
             this.Films_comboBox.Name = "Films_comboBox";
             this.Films_comboBox.Size = new System.Drawing.Size(241, 24);
             this.Films_comboBox.TabIndex = 20;
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(330, 491);
+            this.label11.Location = new System.Drawing.Point(334, 529);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(244, 35);
             this.label11.TabIndex = 19;
@@ -258,7 +278,7 @@
             // DeleteFW_button
             // 
             this.DeleteFW_button.Enabled = false;
-            this.DeleteFW_button.Location = new System.Drawing.Point(12, 449);
+            this.DeleteFW_button.Location = new System.Drawing.Point(12, 436);
             this.DeleteFW_button.Name = "DeleteFW_button";
             this.DeleteFW_button.Size = new System.Drawing.Size(302, 49);
             this.DeleteFW_button.TabIndex = 21;
@@ -267,11 +287,58 @@
             this.DeleteFW_button.Visible = false;
             this.DeleteFW_button.Click += new System.EventHandler(this.DeleteFW_button_ClickAsync);
             // 
+            // Info_button
+            // 
+            this.Info_button.Location = new System.Drawing.Point(12, 491);
+            this.Info_button.Name = "Info_button";
+            this.Info_button.Size = new System.Drawing.Size(302, 49);
+            this.Info_button.TabIndex = 22;
+            this.Info_button.Text = "Вся информация";
+            this.Info_button.UseVisualStyleBackColor = true;
+            this.Info_button.Click += new System.EventHandler(this.Info_button_Click);
+            // 
+            // Sorting_comboBox
+            // 
+            this.Sorting_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Sorting_comboBox.FormattingEnabled = true;
+            this.Sorting_comboBox.Items.AddRange(new object[] {
+            "по имени",
+            "по фамилии",
+            "по возрасту",
+            "по финансовому состоянию"});
+            this.Sorting_comboBox.Location = new System.Drawing.Point(337, 60);
+            this.Sorting_comboBox.Name = "Sorting_comboBox";
+            this.Sorting_comboBox.Size = new System.Drawing.Size(207, 24);
+            this.Sorting_comboBox.TabIndex = 24;
+            this.Sorting_comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.Location = new System.Drawing.Point(334, 31);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(244, 26);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Сортировка";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Reverse_button
+            // 
+            this.Reverse_button.Location = new System.Drawing.Point(550, 60);
+            this.Reverse_button.Name = "Reverse_button";
+            this.Reverse_button.Size = new System.Drawing.Size(28, 23);
+            this.Reverse_button.TabIndex = 25;
+            this.Reverse_button.UseVisualStyleBackColor = true;
+            this.Reverse_button.Click += new System.EventHandler(this.Reverse_button_Click);
+            // 
             // FilmworkersFiltersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 566);
+            this.ClientSize = new System.Drawing.Size(608, 611);
+            this.Controls.Add(this.Reverse_button);
+            this.Controls.Add(this.Sorting_comboBox);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.Info_button);
             this.Controls.Add(this.DeleteFW_button);
             this.Controls.Add(this.Films_comboBox);
             this.Controls.Add(this.label11);
@@ -326,5 +393,9 @@
         private System.Windows.Forms.ComboBox Films_comboBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button DeleteFW_button;
+        private System.Windows.Forms.Button Info_button;
+        private System.Windows.Forms.ComboBox Sorting_comboBox;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button Reverse_button;
     }
 }

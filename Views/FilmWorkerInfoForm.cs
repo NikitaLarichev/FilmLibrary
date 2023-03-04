@@ -13,10 +13,8 @@ namespace FilmsLibrary.Views
 {
     public partial class FilmWorkerInfoForm : Form
     {
-        Actor actor;
-        Producer producer;
-        FilmWorker worker;
-        public FilmWorkerInfoForm(FilmWorker worker)
+        IFilmWorker worker;
+        public FilmWorkerInfoForm(IFilmWorker worker)
         {
             InitializeComponent();
             this.worker = worker;
@@ -24,36 +22,48 @@ namespace FilmsLibrary.Views
         }
         private async void FilmWorkerInfoForm_Load(object sender, EventArgs e)
         {
-            actor = (await DbService.Instance.GetActorsAsync()).FirstOrDefault(a => a.FirstName == worker.FirstName &&
-            a.LastName == worker.LastName && a.Birthday == worker.Birthday);
-            producer = (await DbService.Instance.GetProducersAsync()).FirstOrDefault(a => a.FirstName == worker.FirstName &&
-            a.LastName == worker.LastName && a.Birthday == worker.Birthday);
-            FilmworkerInfoVisual();
+            if(await ListBoxsControl() == true)
+                FilmworkerInfoVisual();
         }
-        private void FilmworkerInfoVisual()
+        private async Task<bool> ListBoxsControl()
+        {
+            try
+            {
+                if (await FilmWorkersService.Instance.FwIsActor(worker) == false)
+                {
+                    Filmography_label.Visible = false;
+                    Filmography_listBox.Visible = false;
+                    this.Size = new Size(500, this.Size.Height);
+                }
+                if (await FilmWorkersService.Instance.FwIsProducer(worker) == false)
+                {
+                    ProducedFilms_listBox.Visible = false;
+                    ProducedFilm_label.Visible = false;
+                    Filmography_listBox.Location = new Point(294, Filmography_listBox.Location.Y);
+                    Filmography_label.Location = new Point(294, Filmography_label.Location.Y);
+                    this.Size = new Size(500, this.Size.Height);
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        private async void FilmworkerInfoVisual()
         {
             Name_label.Text = worker.ToString();
             Info_label.Text = $"Пол: {worker.Sex}\nДата рождения: {worker.Birthday}\n";
             Info_label.Text += $"Место рождения: {worker.Nation.ToString()}, {worker.City}\n";
             Info_label.Text += $"Финансовое состояние: {worker.FinState}$";
-            if (producer != null)
-                (producer).FilmsProduce.ToList().ForEach(f => ProducedFilms_listBox.Items.Add(f));
-            else
-            {//перенести визуал в отдельный метод
-                ProducedFilms_listBox.Visible = false;
-                ProducedFilm_label.Visible = false;
-                Filmography_listBox.Location = new Point(294, Filmography_listBox.Location.Y);
-                Filmography_label.Location = new Point(294, Filmography_label.Location.Y);
-                this.Size = new Size(500, this.Size.Height);
-            }
-            if (actor != null)
-                (actor).Filmography.ToList().ForEach(f => Filmography_listBox.Items.Add(f));
-            else
+            if(await FilmWorkersService.Instance.FwIsActor(worker) == true)
             {
-                Filmography_label.Visible = false;
-                Filmography_listBox.Visible = false;
-                this.Size = new Size(500, this.Size.Height);
-            }
+                (await FilmWorkersService.Instance.GetActorAsync(worker)).GetFilms().ToList().ForEach(f => Filmography_listBox.Items.Add(f));
+            }          
+            if (await FilmWorkersService.Instance.FwIsProducer(worker) == true)
+            {
+                (await FilmWorkersService.Instance.GetProducerAsync(worker)).GetFilms().ToList().ForEach(f => ProducedFilms_listBox.Items.Add(f));
+            }           
         }
         private void Name_label_Click(object sender, EventArgs e)
         {

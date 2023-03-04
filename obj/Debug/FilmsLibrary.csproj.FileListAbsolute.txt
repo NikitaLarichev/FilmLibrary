@@ -17,7 +17,6 @@ C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.MainForm.resourc
 C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.Views.UserForm.resources
 C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.Views.AddFilmForm.resources
 C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.Views.AdminForm.resources
-C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.Views.ListBoxForm.resources
 C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.AddFilmworkerForm.resources
 C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.Views.FilmworkersFiltersForm.resources
 C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.Views.FilmInfoForm.resources
@@ -29,3 +28,5 @@ C:\Users\larik\source\repos\FilmsLibrary\bin\Debug\Pbkdf2.dll
 C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.Views.RegistartionForm.resources
 C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.Migrations.updateuser.resources
 C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.Views.QueryForm.resources
+C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.Views.FilmsRedactListBoxForm.resources
+C:\Users\larik\source\repos\FilmsLibrary\obj\Debug\FilmsLibrary.Views.FWListBoxForm.resources

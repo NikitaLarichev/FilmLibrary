@@ -13,5 +13,9 @@ namespace FilmsLibrary.Models
         {
             Filmography = new List<Film>();
         }
+        public ICollection<Film> GetFilms()
+        {
+            return Filmography;
+        }
     }
 }

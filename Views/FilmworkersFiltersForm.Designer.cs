@@ -309,8 +309,7 @@
             this.Sorting_comboBox.Location = new System.Drawing.Point(337, 60);
             this.Sorting_comboBox.Name = "Sorting_comboBox";
             this.Sorting_comboBox.Size = new System.Drawing.Size(207, 24);
-            this.Sorting_comboBox.TabIndex = 24;
-            this.Sorting_comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.Sorting_comboBox.TabIndex = 24;          
             // 
             // label12
             // 
@@ -327,6 +326,7 @@
             this.Reverse_button.Name = "Reverse_button";
             this.Reverse_button.Size = new System.Drawing.Size(28, 23);
             this.Reverse_button.TabIndex = 25;
+            this.Reverse_button.Text = "↑";
             this.Reverse_button.UseVisualStyleBackColor = true;
             this.Reverse_button.Click += new System.EventHandler(this.Reverse_button_Click);
             // 

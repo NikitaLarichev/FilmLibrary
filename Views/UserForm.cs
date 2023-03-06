@@ -1,4 +1,5 @@
-﻿using FilmsLibrary.Models;
+﻿using FilmsLibrary.Controls;
+using FilmsLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -222,40 +223,34 @@ namespace FilmsLibrary.Views
             List<Genre> genres = new List<Genre>();
             foreach(Genre g in Genre_listBox.Items)
                 genres.Add(g);
-            List<FilmWorker> actors = new List<FilmWorker>();
-            foreach (FilmWorker w in Actor_listBox.Items)
+
+            List<Actor> actors = new List<Actor>();
+            foreach (Actor w in Actor_listBox.Items)
                 actors.Add(w);
+
             List<DemoCountry> demo = new List<DemoCountry>();
             foreach (DemoCountry d in DemoCountries_listBox.Items)
                 demo.Add(d);
+
             List<Film> list = null;
-            list = filmList.Where(f => genres.All(gl => f.Genres.Any(g => g.Name == gl.Name))).ToList();
-            if (genres.Count == 0)
-                list = filmList;
+            list = genres.Count == 0 ? filmList : FilmFilters.Instance.GenreFilters(filmList, genres);
             List<Film> list1 = null;
-            list1 = list.Where(f => actors.All(a => f.Actors.Any(ac => ac.FirstName == a.FirstName && ac.LastName == a.LastName))).ToList();
-            if (actors.Count == 0)
-                list1 = list;
+            list1 = actors.Count == 0 ? list : FilmFilters.Instance.ActorFilters(list, actors);
             List<Film> list2 = null;
-            list2 = list1.Where(f => f.CountryProduce == Country_comboBox.SelectedItem).ToList();
-            if (Country_comboBox.SelectedIndex == 0)
-                list2 = list1;
+            list2 = Country_comboBox.SelectedIndex == 0 ? list1 : FilmFilters.Instance.CountryFilters(list1, (Country)Country_comboBox.SelectedItem);
             List<Film> list3 = null;
-            list3 = list2.Where(f => f.FilmProducer == Producer_comboBox.SelectedItem).ToList();
-            if (Producer_comboBox.SelectedIndex == 0)
-                list3 = list2;
+            list3 = Producer_comboBox.SelectedIndex == 0 ? list2 : FilmFilters.Instance.ProducerFilters(list2, (Producer)Producer_comboBox.SelectedItem);
             List<Film> list4 = null;
-            list4 = list3.Where(f => (Decimal)f.Rating >= Rating1_numericUpDown.Value && (Decimal)f.Rating <= Rating2_numericUpDown.Value).ToList();
+            list4 = FilmFilters.Instance.RatingFilters(list3, (float)Rating1_numericUpDown.Value, (float)Rating2_numericUpDown.Value);
             List<Film> list5 = null;
-            list5 = list4.Where(f => f.Year.Year >= Year1_numericUpDown.Value && f.Year.Year <= Year2_numericUpDown.Value).ToList();
+            list5 = FilmFilters.Instance.YearFilters(list4, (int)Year1_numericUpDown.Value, (int)Year2_numericUpDown.Value);
             List<Film> list6 = null;
-            list6 = list5.Where(f => f.Budget >= Budget1_numericUpDown.Value && f.Budget <= Budget2_numericUpDown.Value).ToList();
+            list6 = FilmFilters.Instance.BudgetFilters(list5, Budget1_numericUpDown.Value, Budget2_numericUpDown.Value);
             List<Film> list7 = null;
-            list7 = list6.Where(f => f.BoxOffice >= Box1_numericUpDown.Value && f.BoxOffice <= Box2_numericUpDown.Value).ToList();
+            list7 = FilmFilters.Instance.BoxOfficeFilters(list6, Box1_numericUpDown.Value, Box2_numericUpDown.Value);
             List<Film> list8 = null;
-            list8 = list7.Where(f => demo.All(d => f.CountriesDemonstration.Any(c => c.Name == d.Name) == true)).ToList();
-            if (demo.Count == 0)
-                list8 = list7;
+            list8 = demo.Count == 0 ? list7 : FilmFilters.Instance.DemoCountriesFilters(list7, demo);
+
             return list8;
         }
         private async void ActorsFilters_button_ClickAsync(object sender, EventArgs e)
@@ -288,79 +283,5 @@ namespace FilmsLibrary.Views
             }
         }
 
-        private void Producer_comboBox_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UserForm_Load(object sender, EventArgs e)
-        {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
     }
 }

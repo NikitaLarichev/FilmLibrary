@@ -50,6 +50,7 @@ namespace FilmsLibrary.Views
                 return false;
             }
         }
+        //нарушение второго принципа SOLID
         private async void FilmworkerInfoVisual()
         {
             Name_label.Text = worker.ToString();

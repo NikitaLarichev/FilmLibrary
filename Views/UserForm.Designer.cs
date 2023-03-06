@@ -199,7 +199,6 @@
             this.Producer_comboBox.Name = "Producer_comboBox";
             this.Producer_comboBox.Size = new System.Drawing.Size(268, 24);
             this.Producer_comboBox.TabIndex = 11;
-            this.Producer_comboBox.SelectedIndexChanged += new System.EventHandler(this.Producer_comboBox_SelectedIndexChanged_1);
             // 
             // label6
             // 
@@ -544,7 +543,6 @@
             this.Controls.Add(this.Films_listBox);
             this.Name = "UserForm";
             this.Text = "UserForm";
-            this.Load += new System.EventHandler(this.UserForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Year1_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Year2_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Budget2_numericUpDown)).EndInit();

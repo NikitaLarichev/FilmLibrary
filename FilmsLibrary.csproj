@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\FilmFilters.cs" />
+    <Compile Include="Controls\FwFilters.cs" />
     <Compile Include="DbFill.cs" />
     <Compile Include="Migrations\202302221237490_Initialcreate.cs" />
     <Compile Include="Migrations\202302221237490_Initialcreate.designer.cs">

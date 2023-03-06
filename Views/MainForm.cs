@@ -29,8 +29,6 @@ namespace FilmsLibrary
             if ((await dbFill.AddFilmsAndActorsAsync()) == true)
             {
                 MessageBox.Show("Фильмы и актёры успешно добавлены в базу данных!");
-                button1.Enabled = true;
-                button2.Enabled = true;
                 linkLabel1.Enabled = true;
                 login_textBox.Enabled = true;
                 password_textBox.Enabled = true;
@@ -43,19 +41,6 @@ namespace FilmsLibrary
             else
                 MessageBox.Show("Ошибка при загрузке данных!");
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            userForm = new UserForm("Пользователь");
-            userForm.ShowDialog();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            adminForm = new AdminForm();
-            adminForm.ShowDialog();
-        }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             registartionForm = new RegistartionForm();

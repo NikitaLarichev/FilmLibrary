@@ -30,11 +30,14 @@ namespace FilmsLibrary.Views
 
         private async void TextBox1_TextChanged(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();          
+            listBox1.Items.Clear();
             if (textBox1.Text == "")
                 (await FilmsService.Instance.GetFilmsAsync()).ForEach(o => listBox1.Items.Add(o));
             else
+            {
+                //это запрос находит название фильма по введенным буквам
                 (await FilmsService.Instance.GetFilmsAsync()).Where(f => f.Name.Contains(textBox1.Text)).ToList().ForEach(o => listBox1.Items.Add(o));
+            }
         }
 
         private void ListBox1_DoubleClick(object sender, EventArgs e)

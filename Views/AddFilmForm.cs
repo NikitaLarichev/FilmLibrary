@@ -27,6 +27,7 @@ namespace FilmsLibrary.Views
             Actors_listBox.DoubleClick += Actors_listBox_DoubleClick;
             CountryDemo_listBox.DoubleClick += CountryDemo_listBox_DoubleClick;
             Genre_listBox.DoubleClick += Genre_listBox_DoubleClick;
+            Genre_comboBox.SelectedIndex = 0;
         }
 
         private void Genre_listBox_DoubleClick(object sender, EventArgs e)
@@ -57,6 +58,7 @@ namespace FilmsLibrary.Views
         {
             (await ExtraDataService.Instance.GetCountriesAsync()).ForEach(c => Country_comboBox.Items.Add(c));
             (await ExtraDataService.Instance.GetDemoCountriesAsync()).ForEach(c => CountryDemo_comboBox.Items.Add(c));
+
         }
         private async void Producer_textBox_ClickAsync(object sender, EventArgs e)
         {

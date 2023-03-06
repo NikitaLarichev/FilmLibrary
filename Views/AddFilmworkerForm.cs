@@ -28,6 +28,7 @@ namespace FilmsLibrary
         private async Task<bool> FilmworkerCreatorAsync(string ProfessionName)
         {
             FilmWorker worker = null;
+            //нарушение второго принципа SOLID которое я не знаю как исправить
             try
             {
                 switch (ProfessionName)

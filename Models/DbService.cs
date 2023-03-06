@@ -138,23 +138,6 @@ namespace FilmsLibrary.Models
                     return false;
                 }
             }
-            //public async Task<bool> RedactFilm(Film oldFilm, Film newFilm)
-            //{
-            //    try
-            //    {
-
-            //        Film temp = (await GetFilmsAsync()).FirstOrDefault(f => f.Id == oldFilm.Id);
-            //        if (temp != null)
-            //        {
-            //            temp = newFilm;
-            //            await _context.SaveChangesAsync();
-            //        }
-            //        return true;
-            //    }
-            //    catch (Exception)
-            //    {
-            //        return false;
-            //    }
 
             public async Task<bool> SaveChangesDbAsync()
             {

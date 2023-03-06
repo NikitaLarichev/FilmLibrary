@@ -1,4 +1,5 @@
-﻿using FilmsLibrary.Models;
+﻿using FilmsLibrary.Controls;
+using FilmsLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,6 @@ namespace FilmsLibrary.Views
             Country_comboBox.SelectedIndex = 0;
             City_comboBox.SelectedIndex = 0;
             Films_comboBox.SelectedIndex = 0;
-            Sorting_comboBox.SelectedIndex = 0;
 
         }
         private void ExtraButtonLoad()
@@ -71,7 +71,9 @@ namespace FilmsLibrary.Views
             dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
             numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
             numericUpDown2.ValueChanged += numericUpDown2_ValueChanged;
+            Sorting_comboBox.SelectedIndexChanged += Sorting_comboBox_SelectedIndexChanged;
 
+            Sorting_comboBox.SelectedIndex = 0;
             UpdateListBox(AllFilters());
         }
 
@@ -88,39 +90,21 @@ namespace FilmsLibrary.Views
         private List<IFilmWorker> AllFilters()
         {
             List<IFilmWorker> list1 = null;
-            list1 = list.Where(f => f.Sex == Sex_comboBox.Text).ToList();
+            list1 = FwFilters.Instance.SexFilter(list, Sex_comboBox.Text);
             if (Sex_comboBox.SelectedIndex == 0)
                 list1 = list;
             List<IFilmWorker> list2 = null;
-            list2 = list1.Where(f => f.Birthday >= dateTimePicker1.Value.Date && f.Birthday <= dateTimePicker2.Value.Date).ToList();
+            list2 = FwFilters.Instance.BirthdayFilter(list1, dateTimePicker1.Value, dateTimePicker2.Value);
             List<IFilmWorker> list3 = null;
-            list3 = list2.Where(f => f.Nation == Country_comboBox.SelectedItem).ToList();
-            if (Country_comboBox.SelectedIndex == 0)
-                list3 = list2;
+            list3 = Country_comboBox.SelectedIndex == 0 ? list2 : FwFilters.Instance.NationFilter(list2, (Country)Country_comboBox.SelectedItem);
             List<IFilmWorker> list4 = null;
-            list4 = list3.Where(f => f.City == City_comboBox.Text).ToList();
-            if (City_comboBox.SelectedIndex == 0)
-                list4 = list3;
+            list4 = City_comboBox.SelectedIndex == 0 ? list3 : FwFilters.Instance.CityFilter(list3, City_comboBox.Text);
             List<IFilmWorker> list5 = null;
-            list5 = list4.Where(f => f.FinState >= numericUpDown1.Value && f.FinState <= numericUpDown2.Value).ToList();
+            list5 = FwFilters.Instance.FinFilter(list4, numericUpDown1.Value, numericUpDown2.Value);
             if (Films_comboBox.SelectedIndex == 0)
                 return list5;
             List<IFilmWorker> list6 = new List<IFilmWorker>();
-            foreach(IFilmWorker worker in list5)
-            {
-                if (worker is Actor)
-                {
-                    Film film = ((Actor)worker).Filmography.FirstOrDefault(f => f == Films_comboBox.SelectedItem);
-                    if(film != null)
-                        list6.Add(worker);
-                }
-                if (worker is Producer)
-                {
-                    Film film = ((Producer)worker).FilmsProduce.FirstOrDefault(f => f == Films_comboBox.SelectedItem);
-                    if (film != null)
-                        list6.Add(worker);
-                }
-            }
+            list6 = FwFilters.Instance.FilmFilter(list5, (Film)Films_comboBox.SelectedItem);
             return list6;
         }
 
@@ -209,29 +193,37 @@ namespace FilmsLibrary.Views
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Reverse_button.Text = "↑";
-            switch (Sorting_comboBox.SelectedIndex)
-            {
-                case 0: list = list.OrderBy(f => f.FirstName).ToList();
-                    break;
-                case 1: list = list.OrderBy(f => f.LastName).ToList();
-                    break;
-                case 2: list = list.OrderBy(f => f.Birthday).ToList();
-                    break;
-                case 3: list = list.OrderBy(f => f.FinState).ToList();
-                    break;
-                default: list = list.OrderBy(f => f.FirstName).ToList();
-                    break;
-            }
-            UpdateListBox(AllFilters());
-        }
-
         private void Reverse_button_Click(object sender, EventArgs e)
         {
             Reverse_button.Text = Reverse_button.Text == "↑" ? "↓" : "↑";
             list.Reverse();
+            UpdateListBox(AllFilters());
+        }
+        private void SortingFW()
+        {
+            Reverse_button.Text = "↑";
+            switch (Sorting_comboBox.SelectedIndex)
+            {
+                case 0:
+                    list = list.OrderBy(f => f.FirstName).ToList();
+                    break;
+                case 1:
+                    list = list.OrderBy(f => f.LastName).ToList();
+                    break;
+                case 2:
+                    list = list.OrderBy(f => f.Birthday).ToList();
+                    break;
+                case 3:
+                    list = list.OrderBy(f => f.FinState).ToList();
+                    break;
+                default:
+                    list = list.OrderBy(f => f.FirstName).ToList();
+                    break;
+            }
+        }
+        private void Sorting_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SortingFW();
             UpdateListBox(AllFilters());
         }
     }

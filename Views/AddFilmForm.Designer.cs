@@ -239,6 +239,7 @@
             // 
             // Genre_comboBox
             // 
+            this.Genre_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Genre_comboBox.FormattingEnabled = true;
             this.Genre_comboBox.Items.AddRange(new object[] {
             "Боевик",

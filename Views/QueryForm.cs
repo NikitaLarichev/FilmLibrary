@@ -1,4 +1,5 @@
-﻿using FilmsLibrary.Models;
+﻿using FilmsLibrary.Controls;
+using FilmsLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,12 +24,12 @@ namespace FilmsLibrary.Views
 
         private async void QueryForm_Load(object sender, EventArgs e)
         {
-            (await ExtraDataService.Instance.GetGenresAsync()).ForEach(g => Genre_comboBox1.Items.Add(g));
-            (await ExtraDataService.Instance.GetGenresAsync()).ForEach(g => Genre_comboBox2.Items.Add(g));
-            (await ExtraDataService.Instance.GetGenresAsync()).ForEach(g => Genre_comboBox3.Items.Add(g));
+            (await GenreService.Instance.GetGenresAsync()).ForEach(g => Genre_comboBox1.Items.Add(g));
+            (await GenreService.Instance.GetGenresAsync()).ForEach(g => Genre_comboBox2.Items.Add(g));
+            (await GenreService.Instance.GetGenresAsync()).ForEach(g => Genre_comboBox3.Items.Add(g));
 
-            (await ExtraDataService.Instance.GetCountriesAsync()).ForEach(c => Country_comboBox1.Items.Add(c));
-            (await ExtraDataService.Instance.GetCountriesAsync()).ForEach(c => Country_comboBox2.Items.Add(c));
+            (await CountriesService.Instance.GetCountriesAsync()).ForEach(c => Country_comboBox1.Items.Add(c));
+            (await CountriesService.Instance.GetCountriesAsync()).ForEach(c => Country_comboBox2.Items.Add(c));
 
             (await FilmWorkersService.Instance.GetFilmWorkersAsync(typeof(List<Actor>))).ForEach(a => Actor_comboBox6.Items.Add(a));
             (await FilmWorkersService.Instance.GetFilmWorkersAsync(typeof(List<Actor>))).ForEach(a => Actor_comboBox7.Items.Add(a));
@@ -55,7 +56,7 @@ namespace FilmsLibrary.Views
         private async void Country_comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Film_comboBox1.Items.Clear();
-            (await ExtraDataService.Instance.GetCountriesAsync()).FirstOrDefault(c => c == (Country)Country_comboBox1.SelectedItem).FilmProduce.ToList().ForEach(f => Film_comboBox1.Items.Add(f));
+            (await CountriesService.Instance.GetCountriesAsync()).FirstOrDefault(c => c == (Country)Country_comboBox1.SelectedItem).FilmProduce.ToList().ForEach(f => Film_comboBox1.Items.Add(f));
             if(Film_comboBox1.Items.Count > 0)
                 Film_comboBox1.SelectedIndex = 0;
         }
@@ -75,8 +76,8 @@ namespace FilmsLibrary.Views
         private async void button3_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            int max = (await ExtraDataService.Instance.GetDemoCountriesAsync()).Max(c => c.Films.ToList().Where(f => f.Genres.Any(g => g == (Genre)Genre_comboBox3.SelectedItem) == true).Count());
-            var list = (await ExtraDataService.Instance.GetDemoCountriesAsync()).Where(c => c.Films.ToList().Where(f => f.Genres.Any(g => g == (Genre)Genre_comboBox3.SelectedItem) == true).Count() == max).ToList();
+            int max = (await DemoCountriesService.Instance.GetDemoCountriesAsync()).Max(c => c.Films.ToList().Where(f => f.Genres.Any(g => g == (Genre)Genre_comboBox3.SelectedItem) == true).Count());
+            var list = (await DemoCountriesService.Instance.GetDemoCountriesAsync()).Where(c => c.Films.ToList().Where(f => f.Genres.Any(g => g == (Genre)Genre_comboBox3.SelectedItem) == true).Count() == max).ToList();
             list.ForEach(o => listBox1.Items.Add(o));
         }
 

@@ -92,11 +92,11 @@ namespace FilmsLibrary.Views
         {
             (await FilmsService.Instance.GetFilmsAsync()).ForEach(f => filmList.Add(f));
 
-            (await ExtraDataService.Instance.GetGenresAsync()).ForEach(g => Genre_comboBox.Items.Add(g));
+            (await GenreService.Instance.GetGenresAsync()).ForEach(g => Genre_comboBox.Items.Add(g));
             (await FilmWorkersService.Instance.GetFilmWorkersAsync(typeof(List<Actor>))).ToList().ForEach(f => Actor_comboBox.Items.Add(f));
             (await FilmWorkersService.Instance.GetFilmWorkersAsync(typeof(List<Producer>))).ToList().ForEach(f => Producer_comboBox.Items.Add(f));
-            (await ExtraDataService.Instance.GetCountriesAsync()).ForEach(c => Country_comboBox.Items.Add(c));
-            (await ExtraDataService.Instance.GetDemoCountriesAsync()).ForEach(c => DemoCountry_comboBox.Items.Add(c));
+            (await CountriesService.Instance.GetCountriesAsync()).ForEach(c => Country_comboBox.Items.Add(c));
+            (await DemoCountriesService.Instance.GetDemoCountriesAsync()).ForEach(c => DemoCountry_comboBox.Items.Add(c));
 
             UpdateListBox(filmList);
         }

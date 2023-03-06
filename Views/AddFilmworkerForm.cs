@@ -1,4 +1,5 @@
-﻿using FilmsLibrary.Models;
+﻿using FilmsLibrary.Controls;
+using FilmsLibrary.Models;
 using FilmsLibrary.Views;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace FilmsLibrary
         }
         private async void AddFilmworkerForm_LoadAsync(object sender, EventArgs e)
         {
-            (await ExtraDataService.Instance.GetCountriesAsync()).ForEach((c) => Country_comboBox.Items.Add(c));
+            (await CountriesService.Instance.GetCountriesAsync()).ForEach((c) => Country_comboBox.Items.Add(c));
             Sex_comboBox.SelectedIndex = 1;
         }
         private async Task<bool> FilmworkerCreatorAsync(string ProfessionName)
@@ -47,7 +48,7 @@ namespace FilmsLibrary
                 worker.Birthday = dateTimePicker1.Value.Date;
                 worker.City = City_textBox.Text;
                 worker.FinState = Decimal.Parse(FinSate_maskedTextBox.Text);
-                worker.Nation = await ExtraDataService.Instance.GetCountryAsync(Country_comboBox.Text);
+                worker.Nation = await CountriesService.Instance.GetCountryAsync(Country_comboBox.Text);
                 switch (ProfessionName)
                 {
                     case "Продюсер":

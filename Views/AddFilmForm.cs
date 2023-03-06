@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FilmsLibrary.Controls;
 using FilmsLibrary.Models;
 
 namespace FilmsLibrary.Views
@@ -56,8 +57,8 @@ namespace FilmsLibrary.Views
 
         private async void AddFilmForm_LoadAsync(object sender, EventArgs e)
         {
-            (await ExtraDataService.Instance.GetCountriesAsync()).ForEach(c => Country_comboBox.Items.Add(c));
-            (await ExtraDataService.Instance.GetDemoCountriesAsync()).ForEach(c => CountryDemo_comboBox.Items.Add(c));
+            (await CountriesService.Instance.GetCountriesAsync()).ForEach(c => Country_comboBox.Items.Add(c));
+            (await DemoCountriesService.Instance.GetDemoCountriesAsync()).ForEach(c => CountryDemo_comboBox.Items.Add(c));
 
         }
         private async void Producer_textBox_ClickAsync(object sender, EventArgs e)
@@ -131,7 +132,7 @@ namespace FilmsLibrary.Views
         }
         private async void button2_ClickAsync(object sender, EventArgs e)
         {
-            Genre genre = await ExtraDataService.Instance.GetGenreAsync(Genre_comboBox.Text);
+            Genre genre = await GenreService.Instance.GetGenreAsync(Genre_comboBox.Text);
             foreach (Genre g in Genre_listBox.Items)
             {
                 if (g.Name == genre.Name)
@@ -142,7 +143,7 @@ namespace FilmsLibrary.Views
         }
         private async void AddCountryDemo_button_ClickAsync(object sender, EventArgs e)
         {
-            DemoCountry country = await ExtraDataService.Instance.GetDemoCountryAsync(CountryDemo_comboBox.Text);
+            DemoCountry country = await DemoCountriesService.Instance.GetDemoCountryAsync(CountryDemo_comboBox.Text);
             if(country.Name != "")
                 CountryDemo_listBox.Items.Add(country);
         }

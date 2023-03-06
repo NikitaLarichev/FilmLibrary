@@ -59,8 +59,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CountriesService.cs" />
     <Compile Include="Controls\FilmFilters.cs" />
     <Compile Include="Controls\FwFilters.cs" />
+    <Compile Include="Controls\GenreService.cs" />
     <Compile Include="DbFill.cs" />
     <Compile Include="Migrations\202302221237490_Initialcreate.cs" />
     <Compile Include="Migrations\202302221237490_Initialcreate.designer.cs">
@@ -86,7 +88,7 @@
     <Compile Include="Models\Encrypt.cs" />
     <Compile Include="Controls\FilmsService.cs" />
     <Compile Include="Controls\FilmWorkersService.cs" />
-    <Compile Include="Controls\ExtraDataService.cs" />
+    <Compile Include="Controls\DemoCountriesService.cs" />
     <Compile Include="Models\IAuth.cs" />
     <Compile Include="Models\IEncrypt.cs" />
     <Compile Include="Models\IFilmWorker.cs" />
